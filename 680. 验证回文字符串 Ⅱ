@@ -1,0 +1,16 @@
+class Solution:
+    def isPalindrome(self, s:str) -> bool:
+        return s == s[::-1]
+
+    def validPalindrome(self, s: str) -> bool:
+        if self.isPalindrome(s):
+            return True
+        i, j = 0, len(s)-1
+        while i<j:
+            if s[i] != s[j]:
+                s1 = s[i+1:j+1]
+                s2 = s[i:j]
+                return self.isPalindrome(s1) or self.isPalindrome(s2)
+            i += 1
+            j -= 1   
+        return True
